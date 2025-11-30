@@ -1,23 +1,38 @@
+import { useState } from "react";
 import Card from "../components/common/Card";
+import PostModal from "../components/common/PostModal";
 
 export default function HomePage() {
+  const [posts, setPosts] = useState([
+    { title: "Card One", content: "This is the first card component." },
+    { title: "Card Two", content: "This is the second card with different content." },
+  ]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const addNewPost = (data: { title: string; content: string }) => {
+    setPosts([...posts, data]);
+  };
+
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Home Page</h1>
+      <h1 className="text-3xl font-bold text-center mb-6">Home Page</h1>
 
-      <Card 
-        title="Card One" 
-        content="This is the first card component." 
-      />
+      <button
+        onClick={() => setIsModalOpen(true)}
+        className="mb-6 px-4 py-2 bg-green-600 text-white rounded"
+      >
+        + Add New Post
+      </button>
 
-      <Card 
-        title="Card Two" 
-        content="This is the second card with different content." 
-      />
+      {posts.map((post, index) => (
+        <Card key={index} title={post.title} content={post.content} />
+      ))}
 
-      <Card 
-        title="Card Three" 
-        content="This shows dynamic reusable components." 
+      <PostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={addNewPost}
       />
     </div>
   );
