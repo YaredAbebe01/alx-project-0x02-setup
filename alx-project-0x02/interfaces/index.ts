@@ -14,3 +14,23 @@ export interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
 }
+
+// PostCard interface
+export interface PostProps {
+  id: Key | null | undefined;
+  userId: number;
+  title: string;
+  body: string;
+}
+// UserCard interface
+export interface UserProps {
+  id: number;
+  name: string;
+  email: string;
+  address: {
+    street: string;
+    suite: string;
+    city: string;
+    zipcode: string;
+  };
+}

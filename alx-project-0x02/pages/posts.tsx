@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import PostCard from "../components/common/PostCard";
 import Header from "../components/layout/Header";
+import { PostProps } from "../interfaces";
 
 export default function Posts() {
+  const [posts, setPosts] = useState<PostProps[]>([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/posts?_limit=10")
+      .then((res) => res.json())
+      .then((data) => setPosts(data));
+  }, []);
+
   return (
     <div>
       <Header />
       <div className="p-6">
-        <h1 className="text-2xl font-bold">Posts Page</h1>
-        <p className="mt-4">This is the posts page. All posts will appear here.</p>
+        <h1 className="text-2xl font-bold mb-4">Posts</h1>
+        {posts.map((post) => (
+          <PostCard
+            key={post.id}
+            userId={post.userId}
+            title={post.title}
+            body={post.body}
+          />
+        ))}
       </div>
     </div>
   );
