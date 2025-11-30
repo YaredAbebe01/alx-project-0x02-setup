@@ -1,9 +1,12 @@
+import Link from "next/link";
 import React from "react";
 
 const Header: React.FC = () => {
   return (
-    <header className="w-full p-4 bg-blue-600 text-white text-center text-xl font-bold">
-      Next.js Project Setup – Header
+    <header className="w-full p-4 bg-blue-600 text-white flex justify-center gap-6 text-lg font-semibold">
+      <Link href="/">Home</Link>
+      <Link href="/home">/home Page</Link>
+      <Link href="/about">About</Link>
     </header>
   );
 };
