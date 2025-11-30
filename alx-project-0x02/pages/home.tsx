@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Card from "../components/common/Card";
 import PostModal from "../components/common/PostModal";
+import Header from "../components/layout/Header";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([
@@ -15,25 +16,28 @@ export default function HomePage() {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Home Page</h1>
+    <div>
+      <Header />
+      <div className="p-6">
+        <h1 className="text-3xl font-bold text-center mb-6">Home Page</h1>
 
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="mb-6 px-4 py-2 bg-green-600 text-white rounded"
-      >
-        + Add New Post
-      </button>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="mb-6 px-4 py-2 bg-green-600 text-white rounded"
+        >
+          + Add New Post
+        </button>
 
-      {posts.map((post, index) => (
-        <Card key={index} title={post.title} content={post.content} />
-      ))}
+        {posts.map((post, index) => (
+          <Card key={index} title={post.title} content={post.content} />
+        ))}
 
-      <PostModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSubmit={addNewPost}
-      />
+        <PostModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={addNewPost}
+        />
+      </div>
     </div>
   );
 }
