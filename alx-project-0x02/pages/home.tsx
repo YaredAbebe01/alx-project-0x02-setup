@@ -3,21 +3,21 @@ import Card from "../components/common/Card";
 export default function HomePage() {
   return (
     <div className="p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">Home Page</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Home Page</h1>
 
       <Card 
-        title="Next.js Card Component" 
-        content="This is a reusable card component created using TypeScript props." 
+        title="Card One" 
+        content="This is the first card component." 
       />
 
       <Card 
-        title="Second Card" 
-        content="You can reuse this card anywhere by passing different props." 
+        title="Card Two" 
+        content="This is the second card with different content." 
       />
 
       <Card 
-        title="ALX Project Component" 
-        content="This demonstrates your ability to build dynamic UI components." 
+        title="Card Three" 
+        content="This shows dynamic reusable components." 
       />
     </div>
   );
